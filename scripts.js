@@ -1,21 +1,35 @@
-// 입력 필드와 h1, form-container, 새 텍스트 요소 선택
 const inputField = document.querySelector('input[type="text"]');
 const heading = document.querySelector('h1');
 const formContainer = document.querySelector('.form-container');
 const resultText = document.querySelector('.result-text');
+const userList = document.querySelector('.user-list');
+
+// 사용자 리스트 예시 데이터
+const users = [
+    "김철수 (치킨 먹기 좋아함)",
+    "박영희 (운동 좋아함)",
+    "이승준 (프로그래밍 매니아)",
+    "남궁나연 (영화 감상 전문가)"
+];
 
 // keydown 이벤트 리스너 추가
 inputField.addEventListener('keydown', function(event) {
-    // 엔터 키를 감지
     if (event.key === 'Enter' && inputField.value.trim() !== '') {
-        event.preventDefault(); // 폼 제출 방지
-        // h1을 사라지게 하고 form을 위로 이동
+        event.preventDefault();
+
         heading.classList.add('hide');
         formContainer.classList.add('move-up');
 
-        // 일정 시간 후에 새로운 텍스트를 표시
         setTimeout(function() {
             resultText.classList.add('show');
-        }, 1000); // form이 이동하는 1초 후에 텍스트 표시
+
+            // 사용자 리스트를 표시
+            userList.innerHTML = ''; // 기존 리스트 초기화
+            users.forEach(function(user) {
+                const li = document.createElement('li');
+                li.textContent = user;
+                userList.appendChild(li);
+            });
+        }, 1000);
     }
 });

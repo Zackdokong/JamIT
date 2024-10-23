@@ -1,38 +1,33 @@
-/* 전체 화면을 Flexbox로 설정 */
 body {
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100vh; /* 화면 높이를 100%로 설정 */
+    height: 100vh;
     margin: 0;
     overflow: hidden;
 }
 
-/* 텍스트와 form을 감싸는 div */
 .form-container {
     text-align: center;
-    transition: transform 1s ease, top 1s ease; /* 애니메이션 효과 */
+    transition: transform 1s ease, top 1s ease;
     position: relative;
 }
 
-/* 텍스트 스타일 */
 h1 {
     font-size: 24px;
-    margin-bottom: 20px; /* form과의 간격 */
+    margin-bottom: 20px;
     color: #333;
-    transition: opacity 0.5s ease; /* 사라지는 애니메이션 */
+    transition: opacity 0.5s ease;
 }
 
-/* form 크기와 스타일 조정 */
 form {
-    width: 500px; /* form의 너비 조정 */
-    padding: 20px; /* form 안쪽 여백 */
-    background-color: #f0f0f0; /* 배경색 */
-    border-radius: 10px; /* 모서리를 둥글게 */
-    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1); /* 그림자 효과 */
+    width: 500px;
+    padding: 20px;
+    background-color: #f0f0f0;
+    border-radius: 10px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
 }
 
-/* input 크기 조정 */
 input[type="text"] {
     width: 100%;
     padding: 10px;
@@ -42,12 +37,10 @@ input[type="text"] {
     box-sizing: border-box;
 }
 
-/* form이 위로 이동하는 클래스 */
 .move-up {
-    transform: translateY(-200px); /* form이 위로 이동 */
+    transform: translateY(-200px);
 }
 
-/* h1이 사라지는 클래스 */
 .hide {
     opacity: 0;
 }
@@ -58,10 +51,23 @@ input[type="text"] {
     opacity: 0;
     transition: opacity 1s ease;
     margin-bottom: 20px;
-    display: none; /* 처음에는 보이지 않도록 설정 */
+    display: none;
 }
 
 .show {
     opacity: 1;
-    display: block; /* 나타날 때 display를 block으로 */
+    display: block;
+}
+
+.user-list {
+    list-style-type: none;
+    padding: 0;
+    margin-top: 20px;
+}
+
+.user-list li {
+    background-color: #e0e0e0;
+    padding: 10px;
+    margin: 10px 0;
+    border-radius: 5px;
 }
