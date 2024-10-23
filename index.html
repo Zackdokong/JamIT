@@ -46,7 +46,7 @@
             font-size: 16px;
             border: 1px solid #ccc;
             border-radius: 5px;
-            box-sizing: border-box;
+            box-sizing:border-box
         }
 
         /* form이 위로 이동하는 클래스 */
@@ -58,6 +58,20 @@
         .hide {
             opacity: 0;
         }
+
+        /* 새 텍스트를 감추는 클래스 */
+        .result-text {
+            font-size: 24px;
+            color: #333;
+            opacity: 0;
+            transition: opacity 1s ease;
+            margin-bottom: 20px;
+        }
+
+        /* 새 텍스트가 나타나는 클래스 */
+        .show {
+            opacity: 1;
+        }
     </style>
 </head>
 <body>
@@ -65,16 +79,18 @@
     <!-- 텍스트와 form을 감싸는 div -->
     <div class="form-container">
         <h1>당신이 상상하는 것을 이뤄보세요, 잼잇</h1>
+        <p class="result-text">이런 사람을 찾았어요!</p> <!-- 새로 추가된 텍스트 -->
         <form>
             <input type="text" name="tag" placeholder="내용을 입력하세요">
         </form>
     </div>
 
     <script>
-        // 입력 필드와 h1, form-container 요소 선택
+        // 입력 필드와 h1, form-container, 새 텍스트 요소 선택
         const inputField = document.querySelector('input[type="text"]');
         const heading = document.querySelector('h1');
         const formContainer = document.querySelector('.form-container');
+        const resultText = document.querySelector('.result-text');
 
         // keydown 이벤트 리스너 추가
         inputField.addEventListener('keydown', function(event) {
@@ -84,6 +100,11 @@
                 // h1을 사라지게 하고 form을 위로 이동
                 heading.classList.add('hide');
                 formContainer.classList.add('move-up');
+
+                // 일정 시간 후에 새로운 텍스트를 표시
+                setTimeout(function() {
+                    resultText.classList.add('show');
+                }, 1000); // form이 이동하는 1초 후에 텍스트 표시
             }
         });
     </script>
