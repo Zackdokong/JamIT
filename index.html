@@ -5,45 +5,88 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <style>
+        /* 전체 화면을 Flexbox로 설정 */
         body {
-            display:flex;
+            display: flex;
             justify-content: center;
             align-items: center;
-            height:100vh;
+            height: 100vh; /* 화면 높이를 100%로 설정 */
             margin: 0;
+            overflow: hidden;
+        }
+
+        /* 텍스트와 form을 감싸는 div */
+        .form-container {
             text-align: center;
+            transition: transform 1s ease, top 1s ease; /* 애니메이션 효과 */
+            position: relative;
         }
 
+        /* 텍스트 스타일 */
+        h1 {
+            font-size: 24px;
+            margin-bottom: 20px; /* form과의 간격 */
+            color: #333;
+            transition: opacity 0.5s ease; /* 사라지는 애니메이션 */
+        }
+
+        /* form 크기와 스타일 조정 */
         form {
-            width:500px;
-            padding:20px;
-            background-color:white;
-            border-radius: 10px;
-            box-shadow: 0px 4px 8px rgba(0,0,0,0.1);
+            width: 500px; /* form의 너비 조정 */
+            padding: 20px; /* form 안쪽 여백 */
+            background-color: #f0f0f0; /* 배경색 */
+            border-radius: 10px; /* 모서리를 둥글게 */
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1); /* 그림자 효과 */
         }
 
+        /* input 크기 조정 */
         input[type="text"] {
-            width:100%;
-            padding:10px;
-            font-size:16px;
+            width: 100%;
+            padding: 10px;
+            font-size: 16px;
             border: 1px solid #ccc;
-            border-radius:5px;
+            border-radius: 5px;
             box-sizing: border-box;
         }
 
-        h1 {
-            font-size: 24px;
-            margin-bottom: 20px;
-            color:#333;
+        /* form이 위로 이동하는 클래스 */
+        .move-up {
+            transform: translateY(-200px); /* form이 위로 이동 */
+        }
+
+        /* h1이 사라지는 클래스 */
+        .hide {
+            opacity: 0;
         }
     </style>
 </head>
 <body>
+
+    <!-- 텍스트와 form을 감싸는 div -->
     <div class="form-container">
         <h1>당신이 상상하는 것을 이뤄보세요, 잼잇</h1>
         <form>
             <input type="text" name="tag" placeholder="내용을 입력하세요">
         </form>
     </div>
+
+    <script>
+        // 입력 필드와 h1, form-container 요소 선택
+        const inputField = document.querySelector('input[type="text"]');
+        const heading = document.querySelector('h1');
+        const formContainer = document.querySelector('.form-container');
+
+        // keydown 이벤트 리스너 추가
+        inputField.addEventListener('keydown', function(event) {
+            // 엔터 키를 감지
+            if (event.key === 'Enter' && inputField.value.trim() !== '') {
+                event.preventDefault(); // 폼 제출 방지
+                // h1을 사라지게 하고 form을 위로 이동
+                heading.classList.add('hide');
+                formContainer.classList.add('move-up');
+            }
+        });
+    </script>
+
 </body>
 </html>
