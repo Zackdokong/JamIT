@@ -155,19 +155,16 @@ document.addEventListener("DOMContentLoaded", () => {
             const tag = inputField.value.trim().toLowerCase();
             filteredUsers = users.filter(user => user.interests.toLowerCase().includes(tag));
 
-            // 필터링된 사용자가 있는 경우에만 더보기 버튼 보이기
-            if (tag === '') {
-                loadMoreButton.style.display = "none"; // 태그가 비어있을 경우 버튼 숨기기
-                resultText.textContent = ""; // 결과 텍스트 초기화
-                userList.classList.remove('show'); // 리스트 숨기기
-            } else if (filteredUsers.length > 0) {
+            if (filteredUsers.length > 0) {
                 loadMoreButton.style.display = "block"; // 필터링된 사용자가 있을 경우 버튼 보이기
                 addUsersToList(); // 필터링된 사용자 추가
             } else {
                 loadMoreButton.style.display = "none"; // 필터링된 사용자가 없으면 버튼 숨기기
-                resultText.textContent = "해당하는 사용자가 없습니다."; // 사용자 없음 메시지
-                userList.classList.remove('show'); // 리스트 숨기기
+                userList.innerHTML = '<li>해당하는 사용자가 없습니다.</li>'; // user-list 위치에 메시지 추가
+                resultText.textContent = ""; // 결과 텍스트 초기화
+                userList.classList.add('show'); // 리스트를 보이게 처리
             }
+            
         }
     });
 
