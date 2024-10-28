@@ -4,7 +4,7 @@ body {
     align-items: center;
     height: 100vh;
     margin: 0;
-    overflow: hidden;
+    overflow: auto;
     font-family: Arial, sans-serif;
 }
 
@@ -64,9 +64,10 @@ input[type="text"] {
     list-style-type: none;
     padding: 0;
     margin-top: 20px;
-    opacity: 0; /* 초기 상태에서 보이지 않게 */
-    transition: opacity 1s ease; /* 애니메이션 효과 추가 */
+    opacity: 0;
+    transition: opacity 1s ease;
 }
+
 
 .user-list.show {
     opacity: 1; /* 완전히 보이게 */
