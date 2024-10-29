@@ -2,6 +2,9 @@ document.addEventListener("DOMContentLoaded", () => {
     const messageInput = document.getElementById("message-input");
     const sendButton = document.getElementById("send-button");
     const chatMessages = document.getElementById("chat-messages");
+    const urlParams = new URLSearchParams(window.location.search);
+    const username = urlParams.get('username');
+    document.getElementById('chat-title').textContent = `${username}의 채팅방`;
 
     // 메시지 추가 함수
     function addMessage(content, user = true) {

@@ -21,7 +21,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
             // 사용자 클릭 시 user-detail.html로 이동
             userItem.addEventListener('click', () => {
-                window.location.href = `chat.html`;
+                window.location.href = `chat.html?username=${filteredUsers[i].name}`;
             });
 
             fragment.appendChild(userItem);
